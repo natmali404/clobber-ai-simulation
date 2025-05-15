@@ -1,10 +1,12 @@
 import argparse
+import time
+from datetime import datetime
 from player import Player, MinimaxPlayer, GreedyPlayer, RandomPlayer
 from gamestate import GameState
 from decision_tree import DecisionTree
 
 def parse_args():
-    
+
     #PARAMETERS:
     #-n, m: board size (n x m)
     #-p1, p2: minimax, random, greedy
@@ -24,9 +26,11 @@ def parse_args():
     return parser.parse_args()
 
 
-def print_round_info(rounds, player):
+def print_round_info(rounds, player, start_time):
+    end_time = datetime.now()
+    timestamp = end_time-start_time
     player_name = "player1" if rounds % 2 != 0 else "player2"
-    print(f"Round {rounds} ::: Current move by {player_name} ({player.__class__.__name__}) ({player.color})")
+    print(f"[{timestamp}]Round {rounds} ::: Current move by {player_name} ({player.__class__.__name__}) ({player.color})")
 
 
 
@@ -45,9 +49,10 @@ def main():
     rounds = 1
     current_player = player1
     gameover = False
+    start_time = datetime.now()
 
     while not gameover:
-        print_round_info(rounds, current_player)
+        print_round_info(rounds, current_player, start_time)
         
         possible_moves = gamestate.get_possible_moves(current_player.color)
         
@@ -64,10 +69,11 @@ def main():
             gameover = True
         
     # wins the one who made the last actual move.
+    final_end_time = datetime.now()
     winning_player = "Player1" if current_player == player2 else "Player2"
     print("Winner: ", winning_player)
     print("Round count: ", rounds)
-    print("Board state: ")
+    print("Total time: ", final_end_time-start_time)
 
 
 
