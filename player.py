@@ -7,6 +7,7 @@ from heuristics import evaluate
 @dataclass
 class Player:
     color: str
+    goal: str
     
     def choose_move(self, gamestate: GameState, rounds: int):
         #this is abstract
@@ -18,7 +19,6 @@ class Player:
 @dataclass
 class MinimaxPlayer(Player):
     depth: int
-    goal: str
     pruning: bool = False
     
     #max_depth

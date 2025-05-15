@@ -38,8 +38,8 @@ def main():
     player1_class = player_classes.get(args.player1)
     player2_class = player_classes.get(args.player2)
 
-    player1 = player1_class(color="B", goal="MAX", depth=args.depth, pruning=args.pruning) if player1_class == MinimaxPlayer else player1_class(color="B")
-    player2 = player2_class(color="W", goal="MIN", depth=args.depth, pruning=args.pruning) if player2_class == MinimaxPlayer else player2_class(color="W")
+    player1 = player1_class(color="B", goal="MAX", depth=args.depth, pruning=args.pruning) if player1_class == MinimaxPlayer else player1_class(color="B", goal="MAX")
+    player2 = player2_class(color="W", goal="MIN", depth=args.depth, pruning=args.pruning) if player2_class == MinimaxPlayer else player2_class(color="W", goal="MIN")
 
     gamestate = GameState(n=args.n, m=args.m)
     rounds = 1
