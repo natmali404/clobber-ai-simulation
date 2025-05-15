@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from copy import deepcopy
 
 @dataclass
 class GameState:

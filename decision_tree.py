@@ -16,7 +16,7 @@ class Node:
         self.parent = parent
         self.move = move 
         self.children = []
-        self.score = 0 #? moze -inf?
+        self.score = 0 #? maybe -inf?
 
     def add_child(self, child_node):
         self.children.append(child_node)
